@@ -1,7 +1,7 @@
 import { Request, Response , NextFunction} from 'express';
 import { CampaignInstance } from "../model/campaignModel";
 import { v4 as uuidv4 } from "uuid";
-
+import {db} from "../config";
 import {Schema,option}from '../utils/validation';
 import catchAsync from '../common/error-handler/catchAsyncError';
 
@@ -90,7 +90,29 @@ class CampaignController {
         }
     
     )
-        
+    
+    deleteCampaignHandler = catchAsync(async (req: Request, res: Response, next:NextFunction) =>{
+        try {
+            await CampaignInstance.destroy({
+                where: {},
+                truncate: true,
+              });
+          
+              return res.status(200).send({
+                message: 'All rows in the model have been deleted',
+              });
+    
+          } catch (err) {
+            res.status(500).json({
+                error: "Could not retrieve all campaigns", err,
+                route: "/retrieve"
+            })
+          }
+    //   db.Sequelize.truncate()
+    
+        }
+    
+    )    
   
   }
   

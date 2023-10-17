@@ -14,6 +14,8 @@ router.get("/", (req:Request,res:Response)=>{
 
  router.get('/retrieve', campaignController.retrieveCampaignHandler);
 
+ router.delete('/delete', campaignController. deleteCampaignHandler);
+
 
 
 

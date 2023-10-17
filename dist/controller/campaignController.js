@@ -80,6 +80,24 @@ class CampaignController {
                 });
             }
         });
+        this.deleteCampaignHandler = (0, catchAsyncError_1.default)(async (req, res, next) => {
+            try {
+                await campaignModel_1.CampaignInstance.destroy({
+                    where: {},
+                    truncate: true,
+                });
+                return res.status(200).send({
+                    message: 'All rows in the model have been deleted',
+                });
+            }
+            catch (err) {
+                res.status(500).json({
+                    error: "Could not retrieve all campaigns", err,
+                    route: "/retrieve"
+                });
+            }
+            //   db.Sequelize.truncate()
+        });
     }
 }
 exports.default = CampaignController;

@@ -12,4 +12,5 @@ router.get("/", (req, res) => {
 });
 router.post('/create', campaignController.createCampaignHandler);
 router.get('/retrieve', campaignController.retrieveCampaignHandler);
+router.delete('/delete', campaignController.deleteCampaignHandler);
 exports.default = router;

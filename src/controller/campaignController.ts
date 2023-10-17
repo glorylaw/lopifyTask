@@ -104,11 +104,11 @@ class CampaignController {
     
           } catch (err) {
             res.status(500).json({
-                error: "Could not retrieve all campaigns", err,
-                route: "/retrieve"
+                error: "Could not delete data", err,
+                route: "/delete"
             })
           }
-    //   db.Sequelize.truncate()
+    
     
         }
     
